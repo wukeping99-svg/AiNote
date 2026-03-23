@@ -6,7 +6,7 @@
 
 | 文件 | 用途 |
 | ---- | ---- |
-| `lessons_learned.md` | 记录长期偏好和复用经验 |
+| `memory.md` | 记录长期偏好和复用经验 |
 | `templates.md` | 常见笔记模板 |
 | `README.md` | 当前说明文件 |
 

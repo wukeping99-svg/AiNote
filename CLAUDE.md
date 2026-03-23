@@ -83,8 +83,8 @@ aliases: []
 
 ## 维护说明
 
-- 最简运行时，根目录只要有 `CLAUDE.md` 就能工作
-- 如果要复用仓库内置的记笔记入口，就额外保留 `.claude/skills/takenote/`
+- 所有笔记都要合理归类放置到对应的子目录中，根目录只能有 `CLAUDE.md` 一个文档
+- `.claude/skills/takenote/` 是默认必需组件，负责接收 `/takenote`、`记一下`、`帮我整理成笔记` 这类输入
 - 仓库里的 `README.md` 和 `system_config/` 主要用于模板说明
 - 如果目录结构变了，立刻同步更新本文件
-- 可复用的偏好和经验记录在 `system_config/lessons_learned.md`
+- 可复用的偏好和经验记录在 `system_config/memory.md`

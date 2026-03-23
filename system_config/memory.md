@@ -1,4 +1,4 @@
-# Lessons Learned
+# Memory
 
 This file accumulates reusable insights from user interactions. It serves as the persistent memory for the AI-native notebook system.
 
