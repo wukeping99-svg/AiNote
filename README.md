@@ -4,179 +4,99 @@
 
 中文 | [English](./README_EN.md)
 
-用 [Claude Code](https://claude.com/claude-code) + [Obsidian](https://obsidian.md/) 搭建的个人知识库。
+这是文章《手把手搭建 AI 原生笔记库》对应的最小示例仓库。你可以直接把它当成 Obsidian vault 打开，再用 [Claude Code](https://claude.ai/claude-code) 或 [OpenCode](https://github.com/sst/opencode) 作为主入口来记笔记、整理资料和维护索引。
 
-## 🎯 它是什么
+## ✨ 它能做什么
 
-把笔记甩给 Claude Code，它会：
+把一段原始输入交给 AI，它会按 `CLAUDE.md` 里的规则：
 
-- 🔍 分析主题、关键词和类型
-- 📁 放进合适的文件夹
-- 🔗 建立相关笔记的 wiki 链接
-- 📋 维护文件夹索引和 MoC
-- 🧠 记住你的习惯，越用越顺手
+- 分析这段内容是什么
+- 先搜索相关笔记和 `_index.md`
+- 决定该放进哪个文件夹
+- 创建或更新 Markdown 笔记
+- 同步维护文件夹索引
 
----
+这不是“笔记软件里多了个聊天框”，而是从记录到归档都先经过 AI。
 
-## ⚡ 核心：CLAUDE.md
+## ⚙️ 核心文件
 
-> 这个文件是系统的大脑。Claude Code 处理笔记的所有规则都在这里。
+`CLAUDE.md` 是这套系统的核心。它规定了：
 
-- 笔记处理流程
-- 文件夹结构和命名规则
-- 链接规则和安全限制
-- 你的个人偏好
+- 这个库是干什么的
+- AI 该按什么顺序处理输入
+- 目录结构和搜索规则
+- 笔记格式、写作要求和安全边界
 
-**你可以随意修改 `CLAUDE.md`，让系统更符合你的使用习惯。**
+如果你要把这套模板改成自己的版本，优先改它。
 
----
+## 🚀 快速开始
 
-## 🚀 快速上手
-
-### 1️⃣ 安装
-
-1. 克隆或下载 AiNote 仓库
+1. clone 或下载这个仓库
 2. 用 Obsidian 打开这个文件夹
-3. 编辑 `3_profile/Personal Profile.md` 填写你的信息
-4. 在这个目录下启动 Claude Code
+3. 按你的情况改 `1_关于我/个人背景.md`
+4. 在这个目录下启动 Claude Code 或 OpenCode
+5. 让它先读一遍 `CLAUDE.md`
 
-### 2️⃣ 启用命令
+如果你想在 Claude Code 里用记笔记入口，直接启用仓库自带的 `.claude/skills/takenote` 即可，不需要再维护一份单独的命令模板。
 
-**第一次使用前，必须把命令文件复制到 Claude 的命令目录：**
+## 📁 目录结构
 
-```bash
-# macOS/Linux
-cp .claude/commands/takenote.md ~/.claude/commands/
-
-# Windows
-copy .claude\commands\takenote.md %USERPROFILE%\.claude\commands\
-```
-
-### 3️⃣ 开始记笔记
-
-在终端中：
-```bash
-claude          # 启动 Claude Code
-/takenote 关于社交媒体网络效应的研究想法...
-```
-
-或者直接说话，Claude Code 也会处理。
-
-它会自动：
-1. 分析内容
-2. 创建格式正确的笔记
-3. 放进合适的文件夹
-4. 加标签、建链接
-5. 更新文件夹索引
-
-### 4️⃣ 快捷指令
-
-- `@inbox` — 放进收件箱稍后处理
-- `@merge note name` — 合并到已有笔记
-- `@type:research` — 指定分类
-- `@link note` — 链接到指定笔记
-
-```bash
-/takenote @type:research 行为经济学的新发现...
-```
-
-### 5️⃣ 全局使用
-
-想在任何目录都能记笔记？
-
-1. 复制 `system_config/takenote.md`
-2. 把里面的 `YOUR_VAULT_PATH` 改成你的实际路径
-3. 复制到 `~/.claude/commands/`
-
-这样在任何项目里都能用 `/takenote`。
-
----
-
-## 📁 文件夹结构
-
-```
+```text
 AiNote/
-├── .claude/commands/    # 命令文件
-├── CLAUDE.md           # 系统核心配置
-├── README.md           # 说明文档
-├── README_EN.md        # 英文版
-├── 0_inbox/            # 收件箱
-├── 1_navigation/       # 外部资源索引
-├── 2_ideas/            # 想法笔记
-├── 3_profile/          # 个人信息
-├── 4_teaching/         # 教学材料
-├── 5_meetings/         # 会议记录
-├── 6_research/         # 研究笔记
-├── 7_admin/            # 行政文档
-├── 8_code/             # 代码片段
-├── 9_attachments/      # 附件
-├── 10_bookmarks/       # 书签
-├── workspace/          # 临时文件
-└── system_config/      # 系统配置
+├── CLAUDE.md
+├── README.md
+├── README_EN.md
+├── 1_关于我/
+├── 2_想法/
+├── 3_工作/
+├── 4_学习/
+├── 5_会议/
+├── 6_研究/
+├── 7_行政/
+├── 8_附件/
+├── 9_代码/
+├── 临时工作区/
+└── system_config/
 ```
 
-你可以改这些文件夹名，记得同步更新 `CLAUDE.md`。
+说明：
 
----
+- 这份仓库为了方便说明，额外保留了 `README.md`、`system_config/` 和 `.claude/skills/`
+- 你实际搭自己的库时，最简运行版本保留 `CLAUDE.md` 就够了
+- 如果你也想直接复用记笔记入口，就连同 `.claude/skills/takenote/` 一起保留
+- 每个子文件夹都带一个 `_index.md`，供 AI 先定位再深入读取
 
-## ✨ 特性
+## 🧪 如何验证配置
 
-**Obsidian 集成**
-- Wiki 链接、别名、标签、frontmatter
+启动 Claude Code 后，直接问：
 
-**自动维护**
-- 每个文件夹的 `_index.md` 自动更新
-- 相关笔记超过 5 篇时建议建 MoC
-- 用 `lessons_learned.md` 记录使用偏好
+```text
+请读一下 CLAUDE.md，告诉我你理解的规则。
+```
 
----
+再测试一个真实问题，比如：
 
-## 📖 示例
+```text
+我之前记过什么关于 AI 原生笔记系统的内容？
+```
 
-vault 里有一篇 [AI原生笔记系统作为个性化学习中心](2_ideas/AI原生笔记系统作为个性化学习中心.md)，展示了这套系统的理念：
+如果它能先通过 `_index.md` 找到相关笔记，再给出准确摘要，说明配置已经跑通。
 
-- 记忆延伸：跨时间连接、模式识别
-- 智能连接：自动发现隐藏关联
-- 上下文理解：从个人档案中"认识"你
-- 自我改进：记住什么有效、什么无效
+## 📖 示例内容
 
-这条笔记本身也是通过工作流生成的——系统可以处理关于系统的内容，形成自我文档化的知识库。
+仓库里放了几类最小示例：
 
----
+- `1_关于我/`：人物背景和当前状态
+- `2_想法/`：一条系统理念笔记和一条示例想法
+- `3_工作/` 到 `9_代码/`：各类别的示例笔记
+- `临时工作区/`：给 AI 放草稿和中间文件
 
-## 📦 需要
+## 📦 需要什么
 
-- [Obsidian](https://obsidian.md/)（查看编辑用）
-- [Claude Code](https://claude.com/claude-code) CLI
-- Claude API
-
-## 🛡️ 安全
-
-- 修改笔记前会确认
-- 不会删除任何内容
-- 保留原始输入
-- 显示所有待应用的修改
-
----
-
-## 💡 建议
-
-1. 自然输入就好，不用管格式
-2. 定期清理 `0_inbox/`
-3. 多建链接，知识才有价值
-4. 保持 `3_profile/` 最新
-5. 把 `workspace/` 里的东西归类
-
----
+- [Obsidian](https://obsidian.md/)
+- [Claude Code](https://claude.ai/claude-code) 或 [OpenCode](https://github.com/sst/opencode)
+- 能读写本地文件的模型接口
 
 ## 👨‍💻 作者
 
 [Xueheng Li](https://github.com/Xueheng-Li)
-
-## 📜 MIT
-
----
-
-<p align="center">
-Made with ❤️ by <a href="https://github.com/Xueheng-Li">Xueheng Li</a>
-</p>

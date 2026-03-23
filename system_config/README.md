@@ -1,24 +1,17 @@
-# System Configuration
+# ⚙️ system_config
 
-This folder contains persistent memory and detailed configuration for the AI-native notebook system.
+这个文件夹放模板仓库的补充配置，避免把 `CLAUDE.md` 写得过长。
 
-## Purpose
+## 包含内容
 
-CLAUDE.md contains only essential instructions (injected every session). Detailed documentation lives here to keep the core prompt lean while allowing unlimited growth of system knowledge.
+| 文件 | 用途 |
+| ---- | ---- |
+| `lessons_learned.md` | 记录长期偏好和复用经验 |
+| `templates.md` | 常见笔记模板 |
+| `README.md` | 当前说明文件 |
 
-## Contents
+## 使用原则
 
-| File | Purpose | Read When |
-|------|---------|-----------|
-| `lessons_learned.md` | Accumulated insights from user interactions | When applying learned preferences or avoiding past errors |
-| `templates.md` | Note templates beyond the standard format | When creating specialized notes |
-| `README.md` | This index file | For navigation |
-
-## Future Additions
-
-As the system evolves, this folder may include:
-
-- `workflows.md` - Detailed workflow documentation
-- `integrations.md` - External tool integration details
-- `custom_commands.md` - User-defined quick commands
-- `archive/` - Superseded lessons and deprecated configs
+- `CLAUDE.md` 只保留高频、稳定、必须每次都读的规则
+- 更细的模板和偏好放在这里
+- 如果你继续扩展系统，可以在这里增加 `workflows.md`、`integrations.md` 等补充文件

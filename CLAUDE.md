@@ -1,67 +1,48 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code when working with this repository.
+这个文件规定 Claude Code 在这套 AI 原生笔记库里的工作方式。
 
-## Purpose
+## 用途和背景
 
-AI-Native Note-Taking System. Claude Code processes every note input through analysis, filing, and integration using Obsidian features.
+这是一个用来记录想法、工作材料、学习笔记、会议记录和研究资料的个人知识库。
+每次我给你一段内容，请先理解它是什么，再决定该放到哪里。
 
-## Note Processing Workflow
+我的简要背景：
+- 这是个人知识库模板，默认面向中文用户
+- 输出优先用自然、直接、可落地的中文
+- 如需更完整的人物背景，先读 `1_关于我/个人背景.md`
 
-1. **Analyze** - Topic, keywords, note type
-2. **Context** - Read Personal Profile (if exists); for research notes, read source files first
-3. **Search** - Find related notes for linking
-4. **Place** - Select subfolder; **ASK USER** if uncertain
-5. **Create/Update** - Write with links, tags, formatting
-6. **Connect** - Add `links`; suggest MoC for 5+ related notes
-7. **Report** - Confirm actions and connections made
+目录结构：
+- `1_关于我/`：个人背景、当前状态、长期项目、写作偏好
+- `2_想法/`：灵感、判断、随手记
+- `3_工作/`：项目文档、任务推进、客户资料
+- `4_学习/`：读书、课程、训练材料
+- `5_会议/`：会议记录、决策和待办
+- `6_研究/`：调研、深度分析、资料综述
+- `7_行政/`：汇报、流程、行政文档
+- `8_附件/`：图片、PDF、邮件导出、录音转写
+- `9_代码/`：代码片段、技术备忘
+- `临时工作区/`：AI 的中间产物和待整理草稿
 
-## Folder Structure
+## 每次我输入一段内容时，按这个顺序处理
 
-```text
-ai-takenote/
-├── 0_inbox/          # Inbox for unprocessed notes
-├── 1_navigation/     # External file index (optional)
-├── 2_ideas/          # Ideas, thoughts, AI notes
-├── 3_profile/        # Personal profile & status
-├── 4_teaching/       # Teaching materials
-├── 5_meetings/       # Meeting notes
-├── 6_research/       # Research notes
-├── 7_admin/          # Admin reports
-├── 8_code/           # Code snippets
-├── 9_attachments/    # Attachments (images, PDFs)
-├── 10_bookmarks/     # Web bookmarks
-├── workspace/        # Temp files & AI outputs
-└── system_config/    # System config & lessons
-```
+1. 分析主题、关键词和内容类型。
+2. 先读本文件；如果任务需要个性化判断，再读 `1_关于我/个人背景.md`。
+3. 搜索相关文件夹，先读对应 `_index.md`，再读具体笔记。
+4. 判断是新建还是更新；如果落点不确定，再问我。
+5. 创建或更新笔记，补上必要的链接、标签和来源。
+6. 同步更新对应文件夹的 `_index.md`。
+7. 告诉我你创建了什么、放在哪里、改了什么。
 
-**Root Directory Rule**: Only `CLAUDE.md` belongs at root level. All other files MUST go into subfolders.
+## 搜索方式
 
-## Obsidian Features
+每次搜索，先看根目录结构，再进入相关子文件夹读取 `_index.md`，最后再读具体笔记。
 
-### Wiki Links `[[]]`
+## 更新规则
 
-- **Only link existing notes** - Do not create empty links for institutions, concepts, or journals unless the note exists or user requests creation
-- **Aliases** - `display text` for custom display text
-- **Headings** - `[[note name#section]]` for precise references
+每次创建或更新笔记后，同步更新对应文件夹的 `_index.md`。
 
-### Tags `#`
-
-Use sparingly. Primary tags in frontmatter (type, status); contextual tags inline.
-
-```text
-#type/idea    #type/reference    #status/draft    #project/main
-```
-
-### Maps of Content
-
-For topics with 5+ related notes, create a MoC note (e.g., `Topic MOC.md`) as a navigation hub.
-
-### Folder Index Files
-
-Each folder contains an `_index.md` file with one-sentence descriptions for each note.
-
-## Note Format Standard
+## 笔记格式
 
 ```markdown
 ---
@@ -69,69 +50,41 @@ created: YYYY-MM-DD
 tags:
   - type/idea
   - status/draft
-aliases: [alternative name]
+aliases: []
 ---
 
-# Title
+# 标题
 
-[Content with natural wiki links to related concepts]
+正文
 
 ## Related
 
-- Related Note 1
+- 相关笔记
 
 ## Source
 
-[If applicable: URL, paper citation, origin]
+- 来源链接、附件路径或材料出处
 ```
 
-## Quick Commands
+## 写作要求
 
-- **Raw text**: Process and file automatically
-- **`@inbox`**: Force placement in inbox folder for manual review
-- **`@merge note name`**: Integrate content into existing note
-- **`@type:[category]`**: Override automatic categorization
-- **`@link note`**: Explicitly request linking to specific note
-
-## Safety Rules
-
-- Confirm before merging/modifying existing notes
-- Never delete content without permission
-- Preserve original input
-- Show proposed links/tags before applying
-- Only read (don't modify) files outside this vault
-
-## Workspace Folder
-
-For AI-generated scripts, pipeline processing, and intermediate results. Use prefixes: `temp_`, `pipeline_`, `script_`, `draft_`, `test_`. Review and clean regularly; move important results to proper folders.
-
-## Continuous Improvement
-
-Capture reusable insights in `system_config/lessons_learned.md`. Read it before applying learned preferences.
-
-## Customization
-
-### 当创建或修改中文笔记时，务必去除翻译腔和 AI 味
-
-- 不要有 AI 味
 - 写自然流畅的中文，像人说话一样
-- 避免："值得注意的是"、"需要强调的是"、"总而言之"、"综上所述"
-- 避免：过度使用"的"字、生硬的被动语态、冗长的定语从句
-- 避免：空洞的套话和过度礼貌的表达
-- 创建新笔记后立即检查是否有翻译腔或AI味表达，发现即改
-- 如非必要，勿用引号
+- 不用“值得注意的是”“综上所述”这类套话
+- 如非必要，不用引号
+- 中英文之间保留半角空格
+- 只给已有笔记加 wiki 链接，不要凭空造空链接
 
-### Personalization Steps
+## 安全规则
 
-1. Edit `3_profile/Personal Profile.md` with your information
-2. Customize folder names to match your workflow
-3. Add your own quick commands in this file
-4. Update `system_config/lessons_learned.md` as you work
+- 修改已有笔记前先确认
+- 未经允许不要删除原内容
+- 保留用户原始输入
+- 只读库外文件，不修改库外文件
 
-### Optional Subagents
+## 维护说明
 
-You can configure custom subagents in your Claude Code settings for specialized tasks (e.g., academic writing, meeting summarization).
-
-## Documentation Maintenance
-
-Update this file whenever the vault's directory structure changes.
+- 最简运行时，根目录只要有 `CLAUDE.md` 就能工作
+- 如果要复用仓库内置的记笔记入口，就额外保留 `.claude/skills/takenote/`
+- 仓库里的 `README.md` 和 `system_config/` 主要用于模板说明
+- 如果目录结构变了，立刻同步更新本文件
+- 可复用的偏好和经验记录在 `system_config/lessons_learned.md`
